@@ -1,10 +1,14 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Button } from 'react-native'
 
-const CategoriesScreen = () => {
+const CategoriesScreen = ({ navigation }) => {
     return (
         <View style={styles.screen}>
-            <Text>CategoriesScreen</Text>
+            <Button
+                title="Go to Category Meals"
+                onPress={() => navigation.navigate('Category Meals')}
+            />
+            <Text>CQRS + MEdiaTR</Text>
         </View>
     )
 }

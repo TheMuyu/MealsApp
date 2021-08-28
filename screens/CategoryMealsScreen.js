@@ -1,10 +1,15 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Button } from 'react-native'
 
-const CategoryMealsScreen = () => {
+const CategoryMealsScreen = ({navigation}) => {
     return (
         <View style={styles.screen}>
             <Text>CategoryMealsScreen</Text>
+            <Button style={{marginBottom: 15}}
+                title="Go to Meal Details"
+                onPress={() => navigation.navigate('Meal Details')}
+            />
+            <Button title="Go back" onPress={() => navigation.goBack()} />
         </View>
     )
 }

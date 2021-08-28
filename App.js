@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font'
 import AppLoading from 'expo-app-loading'
-import Navigator from './navigation/Navigator';
+import CategoriesScreen from './screens/CategoriesScreen'
+import { NavigationContainer } from '@react-navigation/native';
+import CategoriesNavigator from './navigation/CategoriesNavigator';
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -22,10 +24,9 @@ export default function App() {
   }
 
   return (
-    <View style={styles.screen}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <CategoriesNavigator />
+    </NavigationContainer>
   );
 }
 
