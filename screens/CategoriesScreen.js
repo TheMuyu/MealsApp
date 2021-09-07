@@ -8,7 +8,7 @@ const CategoriesScreen = ({ navigation }) => {
                 title="Go to Category Meals"
                 onPress={() => navigation.navigate('Category Meals')}
             />
-            <Text>CQRS + MEdiaTR</Text>
+            <Text>React Native App with Expo CLI</Text>
         </View>
     )
 }
