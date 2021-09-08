@@ -1,49 +1,29 @@
 import React from 'react';
-import { Button, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryMealsScreen from './../screens/CategoryMealsScreen'
 import MealDetailScreen from './../screens/MealDetailScreen'
-
-function ProfileScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        title="Go to Notifications"
-        onPress={() => navigation.navigate('Notifications')}
-      />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
-  );
-}
-
-function NotificationsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        title="Go to Settings"
-        onPress={() => navigation.navigate('Settings')}
-      />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
-  );
-}
-
-function SettingsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
-  );
-}
+import Colors from '../constants/Colors';
+import { Platform } from 'react-native';
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Categories" component={CategoriesScreen} />
-      <Stack.Screen name="Category Meals" component={CategoryMealsScreen} />
+      <Stack.Screen name="Categories" component={CategoriesScreen}
+        options={{
+          title: 'Categories', 
+          headerStyle: {
+            backgroundColor: Platform.OS === 'android' ? Colors.accentColor : '#fff',
+          }, 
+          headerTintColor: Platform.OS === 'android' ? '#fff' : Colors.accentColor,
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }} />
+      <Stack.Screen name="Meals" component={CategoryMealsScreen}
+      options={({route}) => ({ title: route.params.categoryName })} />
       <Stack.Screen name="Meal Details" component={MealDetailScreen} />
     </Stack.Navigator>
   );
@@ -51,6 +31,6 @@ function MyStack() {
 
 export default function CategoriesNavigator() {
   return (
-      <MyStack />
+    <MyStack />
   );
 }
