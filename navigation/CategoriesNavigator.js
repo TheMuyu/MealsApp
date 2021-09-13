@@ -11,20 +11,21 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Categories" component={CategoriesScreen}
-        options={{
-          title: 'Categories', 
-          headerStyle: {
-            backgroundColor: Platform.OS === 'android' ? Colors.accentColor : '#fff',
-          }, 
-          headerTintColor: Platform.OS === 'android' ? '#fff' : Colors.accentColor,
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }} />
-      <Stack.Screen name="Meals" component={CategoryMealsScreen}
-      options={({route}) => ({ title: route.params.categoryName })} />
-      <Stack.Screen name="Meal Details" component={MealDetailScreen} />
+      <Stack.Group screenOptions={{
+        headerStyle: {
+          backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : '#fff',
+        },
+        headerTintColor: Platform.OS === 'android' ? '#fff' : Colors.primaryColor,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
+        <Stack.Screen name="Categories" component={CategoriesScreen}
+          options={{ title: 'Categories' }} />
+        <Stack.Screen name="Meals" component={CategoryMealsScreen}
+          options={({ route }) => ({ title: route.params.categoryName })} />
+        <Stack.Screen name="Meal Details" component={MealDetailScreen} />
+      </Stack.Group>
     </Stack.Navigator>
   );
 }
